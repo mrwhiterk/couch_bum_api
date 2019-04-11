@@ -1,0 +1,35 @@
+{
+  "name": "couch_bum_api",
+  "version": "1.0.0",
+  "description": "A MERN Application for exchanging knowledge with lodging",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrwhiterk/couch_bum.git"
+  },
+  "keywords": [
+    "lodging",
+    "skills"
+  ],
+  "author": "Ryan White",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrwhiterk/couch_bum/issues"
+  },
+  "homepage": "https://github.com/mrwhiterk/couch_bum#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jwt-simple": "^0.5.6",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.4.22",
+    "mongoose-unique-validator": "^2.0.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0"
+  }
+}
