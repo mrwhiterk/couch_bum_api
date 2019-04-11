@@ -141,6 +141,17 @@ router.put('/removeSkillFromUser/:id/skill/:skillId', (req, res) => {
   });
 });
 
+router.put('/addSkillToUser/:id', (req, res) => {
+  User.findOne({ _id: req.params.id }).then(user => {
+    user.skills.push(req.body);
+
+    user.save((err, team) => {
+      if (err) console.log(err);
+      res.json(user);
+    });
+  });
+});
+
 // get all hosts
 router.get('/hosts', (req, res) => {
   User.find({ formType: 0 }).then(users => {
