@@ -141,6 +141,19 @@ router.put('/removeSkillFromUser/:id/skill/:skillId', (req, res) => {
   });
 });
 
+router.put('/removeListingFromUser/:id/listing/:listingId', (req, res) => {
+  User.findOne({ _id: req.params.id }).then(user => {
+    user.listings = user.listings.filter(
+      listing => listing.id != req.params.listingId
+    );
+
+    user.save((err, team) => {
+      if (err) console.log(err);
+      res.json(user);
+    });
+  });
+});
+
 router.put('/addSkillToUser/:id', (req, res) => {
   User.findOne({ _id: req.params.id }).then(user => {
     user.skills.push(req.body);
@@ -187,8 +200,9 @@ router.post('/:userId/addSkill', (req, res) => {
 });
 
 // add listing to user
-router.post('/:userId/addListing', (req, res) => {
-  User.findOne({ _id: req.params.userId }).then(user => {
+router.post('/addListingToUser/:id', (req, res) => {
+  User.findOne({ _id: req.params.id }).then(user => {
+    let { imgUrls, address, notes, availability } = req.body;
     Listing.create(req.body).then(listing => {
       user.listings.push(listing);
 
