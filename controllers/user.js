@@ -202,7 +202,12 @@ router.post('/:userId/addSkill', (req, res) => {
 // add listing to user
 router.post('/addListingToUser/:id', (req, res) => {
   User.findOne({ _id: req.params.id }).then(user => {
-    let { imgUrls, address, notes, availability } = req.body;
+    if (req.body.availability === 'yes') {
+      req.body.availability = true;
+    } else {
+      req.body.availability = false;
+    }
+
     Listing.create(req.body).then(listing => {
       user.listings.push(listing);
 
