@@ -172,6 +172,23 @@ router.put('/removeListingFromUser/:id/listing/:listingId', (req, res) => {
   });
 });
 
+router.put('/editUserListing/:id/:listingId', (req, res) => {
+  User.findOne({ _id: req.params.id }).then(user => {
+    user.listings = user.listings.map(listing => {
+      if (listing.id == req.params.listingId) {
+        return req.body;
+      } else {
+        return listing;
+      }
+    });
+
+    user.save((err, team) => {
+      if (err) console.log(err);
+      res.json(user);
+    });
+  });
+});
+
 router.put('/addSkillToUser/:id', (req, res) => {
   User.findOne({ _id: req.params.id }).then(user => {
     user.skills.push(req.body);
