@@ -5,6 +5,26 @@ const passport = require('../config/passport');
 const config = require('../config/config');
 const { User, Skill, Listing } = require('../models/index');
 
+router.get('/admin/deleteUser/:username', (req, res) => {
+  User.findOne({ username: req.params.username })
+    .remove()
+    .exec(function(err, data) {
+      res.json(data);
+    });
+});
+
+router.get('/admin/deleteListing/:username/:address', (req, res) => {
+  User.findOne({ username: req.params.username }).then(user => {
+    user.listings = user.listings.filter(
+      listing => listing.address != req.params.address
+    );
+
+    user.save((err, user) => {
+      res.json(user);
+    });
+  });
+});
+
 router.post('/signup', (req, res) => {
   if (req.body.email && req.body.password) {
     let newUser = {
