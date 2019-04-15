@@ -1,6 +1,6 @@
-# Project Title
+# Couch Bum
 
-One Paragraph of project description goes here
+What if you could get travel accomadation for free and share your passions at the same time? What if you could make new friends and see new places without having to put anything on a debit card? Couch Bum is a platform that lets you exchange your skills and experience for lodging. Once you sign-up, you are already a traveler. Once you post your first listing, you become a host.
 
 ## Getting Started
 
@@ -10,8 +10,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
+Node & npm
 ```
-Give examples
+brew install node
 ```
 
 ### Installing
